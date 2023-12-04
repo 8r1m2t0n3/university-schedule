@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Group Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p><a th:href="@{/admin-panel/model-menu}">models</a></p>
+
+	<form th:action="@{/group/create}" method="post">
+		<button type="submit">Add new Group</button>
+	</form>
+
+	<div class="container">
+		<table class="table table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Grade</th>
+					<th scope="col">Specialization</th>
+					<th scope="col">Students</th>
+					<th scope="col">Lessons</th>
+					<th scope="col">Update fields</th>
+					<th scope="col">Update relations</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="group: ${groups} ">
+					<td th:text="${group.id}" />
+					<td th:text="${group.name}" />
+					<td th:text="${group.grade}" />
+					<td>
+						<span th:if="${group.specialization != null}" th:text="${group.specialization.id}"></span>
+						<span th:if="${group.specialization == null}" text=" "></span>
+					</td>
+					<td>
+						<span th:each="student, iterStat: ${group.students}"
+							th:text="${student.id} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+					<td>
+						<span th:each="lesson, iterStat: ${group.lessons}"
+							th:text="${lesson.id} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+
+					<td>
+						<form th:action="@{/group/update}" th:object="${group}" method="post">
+							<input type="hidden" name="id" th:value="${group.id}" readonly="">
+							<label>name:</label>
+							<input type="text" name="name" th:value="${group.name}">
+							<br><label>grade:</label>
+							<input type="number" name="grade" th:value="${group.grade}">
+							<br><button type="submit">Update</button>
+						</form>
+					</td>
+
+					<td>
+						<form th:action="@{/group/set-specialization}" method="post">
+							<label>specialization:</label>
+							<select name="specializationId">
+								<option th:each="specialization : ${specializations}" th:value="${specialization.id}"
+									th:text="${specialization.id}">
+							</select>
+							<input type="hidden" name="groupId" th:value="${group.id}">
+							<button type="submit">Set</button>
+						</form>
+						<form th:action="@{/group/delete-specialization}" method="post">
+							<label>specialization:</label>
+							<input type="hidden" name="groupId" th:value="${group.id}">
+							<button type="submit">Remove</button>
+						</form>
+						<form th:action="@{/group/add-student}" method="post">
+							<label>students:</label>
+							<select name="studentId">
+								<option th:each="student : ${students}" th:value="${student.id}"
+									th:text="${student.id}">
+							</select>
+							<input type="hidden" name="groupId" th:value="${group.id}">
+							<button type="submit">Add</button>
+						</form>
+						<form th:action="@{/group/delete-student}" method="post">
+							<label>students:</label>
+							<select name="studentId">
+								<option th:each="student : ${students}" th:value="${student.id}"
+									th:text="${student.id}">
+							</select>
+							<input type="hidden" name="groupId" th:value="${group.id}">
+							<button type="submit">Delete</button>
+						</form>
+					</td>
+
+					<td>
+						<form th:action="@{/group/delete}" method="post">
+							<input type="hidden" name="groupId" th:value="${group.id}">
+							<button type="submit">Delete</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>

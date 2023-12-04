@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>User Administration Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p><a th:href="@{/admin-panel}">admin panel</a></p>
+
+	<div class="container">
+		<table class="table table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Username</th>
+					<th scope="col">First name</th>
+					<th scope="col">Last name</th>
+					<th scope="col">Password</th>
+					<th scope="col">Role note</th>
+					<th scope="col">Role</th>
+					<th scope="col">Update</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user: ${users}">
+					<td th:text="${user.id}" />
+					<td th:text="${user.username}" />
+					<td th:text="${user.firstName}" />
+					<td th:text="${user.lastName}" />
+					<td th:text="${user.password}" />
+					<td th:text="${user.roleNote}" />
+					<td th:text="${user.role}" />
+					<td>
+						<form th:action="@{/admin-panel/user-editor/update}" th:object="${user}" method="post">
+							<input type="hidden" name="id" th:value="${user.id}" readonly="">
+							<label>username:</label>
+							<input type="text" name="username" th:value="${user.username}">
+							<label>first name:</label>
+							<input type="text" name="firstName" th:value="${user.firstName}">
+							<label>last name:</label>
+							<input type="text" name="lastName" th:value="${user.lastName}">
+							<br><label>password:</label>
+							<input type="text" name="password" th:value="${user.password}">
+							<br><label>role:</label>
+							<select name="role" th:value="${user.role}">
+								<option value="STUDENT">STUDENT</option>
+								<option value="TEACHER">TEACHER</option>
+								<option value="ADMIN">ADMIN</option>
+							</select>
+							<br><button type="submit">Update</button>
+						</form>
+					</td>
+					<td>
+						<form th:action="@{/admin-panel/user-editor/delete}" th:object="${user}" method="post">
+							<input type="hidden" name="id" th:value="${user.id}">
+							<input type="hidden" name="username" th:value="${user.username}">
+							<input type="hidden" name="password" th:value="${user.password}">
+							<input type="hidden" name="role" th:value="${user.role}">
+							<button type="submit">Delete</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

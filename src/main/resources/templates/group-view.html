@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Group View Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p><a th:href="@{/menu}">menu</a></p>
+
+	<form th:action="@{/group/select-student}" method="post">
+		<label>student:</label>
+		<select name="studentId">
+			<option th:each="student : ${students}" th:value="${student.id}"
+				th:text="${student.firstName} + ' ' + ${student.lastName}">
+		</select>
+		<button type="submit">Select</button>
+	</form>
+	<form th:action="@{/group/select-specialization}" method="post">
+		<label>specialization:</label>
+		<select name="specializationId">
+			<option th:each="specialization : ${specializations}" th:value="${specialization.id}"
+				th:text="${specialization.name}">
+		</select>
+		<button type="submit">Select</button>
+	</form>
+	<form th:action="@{/group/view}" method="get">
+		<button type="submit">All Groups</button>
+	</form>
+
+	<div class="container">
+		<table class="table table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Grade</th>
+					<th scope="col">Specialization</th>
+					<th scope="col">Students</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="group: ${groups}">
+					<td th:text="${group.name}" />
+					<td th:text="${group.grade}" />
+					<td>
+						<span th:if="${group.specialization != null}" th:text="${group.specialization.name}"></span>
+						<span th:if="${group.specialization == null}" text=" "></span>
+					</td>
+					<td>
+						<span th:each="student, iterStat: ${group.students}"
+							th:text="${student.firstName} + ' ' + ${student.lastName} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>

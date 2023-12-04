@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Student View Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p><a th:href="@{/menu}">menu</a></p>
+
+	<form th:action="@{/student/select-group}" method="post">
+		<label>group:</label>
+		<select name="groupName">
+			<option th:each="group : ${groups}" th:value="${group.name}" th:text="${group.name}">
+		</select>
+		<button type="submit">Select</button>
+	</form>
+	<form th:action="@{/student/select-specialization}" method="post">
+		<label>specialization:</label>
+		<select name="specializationName">
+			<option th:each="specialization: ${specializations}" th:value="${specialization.name}"
+				th:text="${specialization.name}">
+		</select>
+		<button type="submit">Select</button>
+	</form>
+	<form th:action="@{/student/view}" method="get">
+		<button type="submit">All Students</button>
+	</form>
+
+	<div class="container">
+		<table class="table table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Birthday</th>
+					<th scope="col">Group</th>
+					<th scope="col">Grade</th>
+					<th scope="col">Specialization</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student: ${students}">
+					<td th:text="${student.firstName} + ' ' + ${student.lastName}" />
+					<td th:text="${student.dateOfBirth}" />
+					<td>
+						<span th:if="${student.group != null}" th:text="${student.group.name}"></span>
+						<span th:if="${student.group == null}" text=" "></span>
+					</td>
+					<td>
+						<span th:if="${student.group != null}" th:text="${student.group.grade}"></span>
+						<span th:if="${student.group == null}" text=" "></span>
+					</td>
+					<td>
+						<span th:if="${student.group != null && student.group.specialization != null}" th:text="${student.group.specialization.name}"></span>
+						<span th:if="${student.group == null || student.group.specialization == null}" text=" "></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>

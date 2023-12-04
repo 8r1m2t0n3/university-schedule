@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Teacher View Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p><a th:href="@{/menu}">menu</a></p>
+
+	<form th:action="@{/teacher/select-course}" method="post">
+		<label>course:</label>
+		<select name="courseName">
+			<option th:each="course : ${courses}" th:value="${course.name}" th:text="${course.name}">
+		</select>
+		<button type="submit">Select</button>
+	</form>
+	<form th:action="@{/teacher/select-department}" method="post">
+		<label>department:</label>
+		<select name="departmentName">
+			<option th:each="department : ${departments}" th:value="${department.name}" th:text="${department.name}">
+		</select>
+		<button type="submit">Select</button>
+	</form>
+	<form th:action="@{/teacher/view}" method="get">
+		<button type="submit">All Teachers</button>
+	</form>
+
+	<div class="container">
+		<table class="table table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Birthday</th>
+					<th scope="col">Courses</th>
+					<th scope="col">Departments</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="teacher : ${teachers}">
+					<td th:text="${teacher.firstName} + ' ' + ${teacher.lastName}" />
+					<td th:text="${teacher.dateOfBirth}" />
+					<td>
+						<span th:each="course, iterStat: ${teacher.courses}"
+							th:text="${course.name} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+					<td>
+						<span th:each="department, iterStat: ${teacher.departments}"
+							th:text="${department.name} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>

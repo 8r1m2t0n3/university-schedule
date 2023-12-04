@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Schedule View Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p><a th:href="@{/menu}">menu</a></p>
+
+	<form th:action="@{/schedule/select-group}" method="post">
+		<label>group:</label>
+		<select name="groupId">
+			<option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.name}">
+		</select>
+		<button type="submit">Select</button>
+	</form>
+	<form th:action="@{/schedule/select-teacher}" method="post">
+		<label>teacher:</label>
+		<select name="teacherId">
+			<option th:each="teacher : ${teachers}" th:value="${teacher.id}"
+				th:text="${teacher.firstName} + ' ' + ${teacher.lastName}">
+		</select>
+		<button type="submit">Select</button>
+	</form>
+	<form th:action="@{/schedule/select-date}" method="post">
+		<label>date:</label>
+		<input type="date" name="date" th:value="${selectedDate}">
+		<button type="submit">Select</button>
+	</form>
+
+	<div th:with="selectedGroup=${selectedGroup}">
+		<div th:if="${selectedGroup != null}">
+			<label>selected group:</label>
+			<div th:text="${selectedGroup.name}"></div>
+		</div>
+		<span th:if="${selectedGroup == null}" text=" "></span>
+	</div>
+
+	<div th:with="selectedTeacher=${selectedTeacher}">
+		<div th:if="${selectedTeacher != null}">
+			<label>selected teacher:</label>
+			<div th:text="${selectedTeacher.firstName} + ' ' + ${selectedTeacher.lastName}"></div>
+		</div>
+		<span th:if="${selectedTeacher == null}" text=" "></span>
+	</div>
+
+	<div th:with="selectedDate=${selectedDate}">
+		<label>selected date:</label>
+		<div th:text="${selectedDate}"></div>
+	</div>
+
+	<div class="container">
+		<table class="table table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Course</th>
+					<th scope="col">Time</th>
+					<th scope="col">Group</th>
+					<th scope="col">Teacher</th>
+					<th scope="col">Building</th>
+					<th scope="col">Room</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lesson : ${lessons}">
+					<td>
+						<span th:if="${lesson.course != null}" th:text="${lesson.course.name}"></span>
+						<span th:if="${lesson.course == null}" text=" "></span>
+					</td>
+					<td>
+						<div th:if="${lessonIdToRenew != lesson.id}">
+							<span th:text="${lesson.startTime} + ' - ' + ${lesson.endTime}"></span>
+						</div>
+
+						<div th:if="${lessonIdToRenew == lesson.id && rescheduleMode == true}">
+							<form th:action="@{/schedule/reschedule-lesson}" th:object="${lesson}" method="post">
+								<input type="hidden" name="id" th:value="${lesson.id}" readonly="">
+								<label>date:</label>
+								<input type="date" name="date" th:value="${lesson.date}">
+								<br><label>start time:</label>
+								<input type="time" name="startTime" th:value="${lesson.startTime}">
+								<br><label>end time:</label>
+								<input type="time" name="endTime" th:value="${lesson.endTime}">
+								<br><label>room:</label>
+								<select name="room">
+									<option th:each="room : ${rooms}" th:value="${room.id}"
+										th:text="${room.building.address + ' - ' + room.number}">
+								</select>
+								<br><button type="submit">Reschedule</button>
+							</form>
+						</div>
+					</td>
+					<td>
+						<span th:if="${lesson.group != null}" th:text="${lesson.group.name}"></span>
+						<span th:if="${lesson.group == null}" text=" "></span>
+					</td>
+					<td>
+						<span th:if="${lesson.teacher != null}"
+							th:text="${lesson.teacher.firstName} + ' ' + ${lesson.teacher.lastName}"></span>
+						<span th:if="${lesson.teacher == null}" text=" "></span>
+					</td>
+					<td>
+						<span th:if="${lesson.room != null && lesson.room.building != null}"
+							th:text="${lesson.room.building.address}"></span>
+						<span th:if="${lesson.room == null || lesson.room.building == null}" text=" "></span>
+					</td>
+					<td>
+						<span th:if="${lesson.room != null}" th:text="${lesson.room.number}"></span>
+						<span th:if="${lesson.room == null}" text=" "></span>
+					</td>
+					<td>
+						<div th:if="${rescheduleButton == true && coursesOfUser.contains(lesson.course.name)}">
+							<form th:action="@{/schedule/reschedule-lesson-mode}" method="post">
+								<input type="hidden" name="lessonId" th:value="${lesson.id}">
+								<button type="submit">Reschedule</button>
+							</form>
+						</div>
+						<div th:if="${deleteButton}">
+							<form th:action="@{/schedule/delete-lesson}" method="post">
+								<input type="hidden" name="lessonId" th:value="${lesson.id}">
+								<button type="submit">Delete</button>
+							</form>
+						</div>
+
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>

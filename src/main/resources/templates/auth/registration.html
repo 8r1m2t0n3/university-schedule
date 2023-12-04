@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<p><a th:href="@{/menu}">menu</a></p>
+	<h1>Registration</h1>
+	<form method="post" th:action="@{/auth/registration}" th:object="${user}">
+		<p th:if="${duplicatedUsernameError}">Username already used!</p>
+		<p th:if="${noStudentError}">No student with such name!</p>
+		<p th:if="${noTeacherError}">No teacher with such name!</p>
+		<p th:if="${weakPasswordError}">Password is too short!</p>
+		<p th:if="${incorrectUsernameError}">Username is not correct!</p>
+		<p th:if="${noRoleNoteError}">Status not set!</p>
+		<div>
+			<p>
+				<label for="username">Username</label>
+				<input th:field="*{username}" required/>
+			</p>
+			<p>
+				<label for="firstName:">First name</label>
+				<input th:field="*{firstName}" required/>
+			</p>
+			<p>
+				<label for="lastName">Last name</label>
+				<input th:field="*{lastName}" required/>
+			</p>
+			<label for="roleNote">Status</label>
+			<select th:field="*{roleNote}" required>
+				<option value="">None</option>
+				<option value="STUDENT">Student</option>
+				<option value="TEACHER">Teacher</option>
+			</select>
+			<p>
+				<label for="password">Password</label>
+				<input type="password" th:field="*{password}" required/>
+			</p>
+		</div>
+		<button type="submit">Register</button>
+	</form>
+</body>
+
+</html>

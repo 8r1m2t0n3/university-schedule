@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Specialization Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p><a th:href="@{/admin-panel/model-menu}">models</a></p>
+
+	<div class="container">
+		<table class="table table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Department</th>
+					<th scope="col">Courses</th>
+					<th scope="col">Groups</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="specialization: ${specializations}">
+					<td th:text="${specialization.id}" />
+					<td th:text="${specialization.name}" />
+					<td> 
+						<span th:if="${specialization.department != null}" th:text="${specialization.department.id}"></span>
+						<span th:if="${specialization.department == null}" text=" "></span>
+					</td>
+					<td>
+						<span th:each="course, iterStat: ${specialization.courses}"
+							th:text="${course.id} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+					<td>
+						<span th:each="group, iterStat: ${specialization.groups}"
+							th:text="${group.id} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>

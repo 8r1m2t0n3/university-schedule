@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Teacher Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p><a th:href="@{/admin-panel/model-menu}">models</a></p>
+
+	<form th:action="@{/teacher/create}" method="post">
+		<button type="submit">Add new Teacher</button>
+	</form>
+
+	<div class="container">
+		<table class="table table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">First</th>
+					<th scope="col">Last</th>
+					<th scope="col">Birthday</th>
+					<th scope="col">Courses</th>
+					<th scope="col">Lessons</th>
+					<th scope="col">Departments</th>
+					<th scope="col">Update fields</th>
+					<th scope="col">Update relations</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="teacher: ${teachers}">
+					<td th:text="${teacher.id}" />
+					<td th:text="${teacher.firstName}" />
+					<td th:text="${teacher.lastName}" />
+					<td th:text="${teacher.dateOfBirth}" />
+					<td>
+						<span th:each="course, iterStat: ${teacher.courses}"
+							th:text="${course.id} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+					<td>
+						<span th:each="lesson, iterStat: ${teacher.lessons}"
+							th:text="${lesson.id} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+					<td>
+						<span th:each="department, iterStat: ${teacher.departments}"
+							th:text="${department.id} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+
+					<td>
+						<form th:action="@{/teacher/update}" th:object="${teacher}" method="post">
+							<input type="hidden" name="id" th:value="${teacher.id}" readonly="">
+							<label>first name:</label>
+							<input type="text" name="firstName" th:value="${teacher.firstName}">
+							<br><label>last name:</label>
+							<input type="text" name="lastName" th:value="${teacher.lastName}">
+							<br><label>birthday:</label>
+							<input type="date" name="dateOfBirth" th:value="${teacher.dateOfBirth}">
+							<br><button type="submit">Update</button>
+						</form>
+					</td>
+
+					<td>
+						<form th:action="@{/teacher/add-course}" method="post">
+							<label>courses:</label>
+							<select name="courseId">
+								<option th:each="course : ${courses}" th:value="${course.id}" th:text="${course.id}">
+							</select>
+							<input type="hidden" name="teacherId" th:value="${teacher.id}">
+							<button type="submit">Add</button>
+						</form>
+						<form th:action="@{/teacher/delete-course}" method="post">
+							<label>courses:</label>
+							<select name="courseId">
+								<option th:each="course : ${courses}" th:value="${course.id}" th:text="${course.id}">
+							</select>
+							<input type="hidden" name="teacherId" th:value="${teacher.id}">
+							<button type="submit">Delete</button>
+						</form>
+						<form th:action="@{/teacher/add-lesson}" method="post">
+							<label>lessons:</label>
+							<select name="lessonId">
+								<option th:each="lesson : ${lessons}" th:value="${lesson.id}" th:text="${lesson.id}">
+							</select>
+							<input type="hidden" name="teacherId" th:value="${teacher.id}">
+							<button type="submit">Add</button>
+						</form>
+						<form th:action="@{/teacher/delete-lesson}" method="post">
+							<label>lessons:</label>
+							<select name="lessonId">
+								<option th:each="lesson : ${lessons}" th:value="${lesson.id}" th:text="${lesson.id}">
+							</select>
+							<input type="hidden" name="teacherId" th:value="${teacher.id}">
+							<button type="submit">Delete</button>
+						</form>
+						<form th:action="@{/teacher/add-department}" method="post">
+							<label>departments:</label>
+							<select name="departmentId">
+								<option th:each="department : ${departments}" th:value="${department.id}"
+									th:text="${department.id}">
+							</select>
+							<input type="hidden" name="teacherId" th:value="${teacher.id}">
+							<button type="submit">Add</button>
+						</form>
+						<form th:action="@{/teacher/delete-department}" method="post">
+							<label>departments:</label>
+							<select name="departmentId">
+								<option th:each="department : ${departments}" th:value="${department.id}"
+									th:text="${department.id}">
+							</select>
+							<input type="hidden" name="teacherId" th:value="${teacher.id}">
+							<button type="submit">Delete</button>
+						</form>
+					</td>
+
+					<td>
+						<form th:action="@{/teacher/delete}" method="post">
+							<input type="hidden" name="teacherId" th:value="${teacher.id}">
+							<button type="submit">Delete</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>

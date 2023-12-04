@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Login Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+	<p><a th:href="@{/menu}">menu</a></p>
+	<div>
+		<form method="post" action="/auth/login">
+			<h2>Login</h2>
+			<p th:if="${loginError}">Wrong user or password</p>
+			<p>
+				<label for="username">Username</label>
+				<input type="text" name="username" placeholder="Username">
+			</p>
+			<p>
+				<label for="password">Password</label>
+				<input type="password" name="password" placeholder="Password">
+			</p>
+			<p>
+				<button type="submit">Sign in</button>
+			</p>
+			<a href="/auth/registration" role="button">Registration</a>
+		</form>
+	</div>
+</body>
+
+</html>

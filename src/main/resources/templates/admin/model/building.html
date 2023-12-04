@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Building Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p><a th:href="@{/admin-panel/model-menu}">models</a></p>
+
+	<div class="container">
+		<table class="table table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Address</th>
+					<th scope="col">University</th>
+					<th scope="col">Departments</th>
+					<th scope="col">Rooms</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="building : ${buildings}">
+					<td th:text="${building.id}" />
+					<td th:text="${building.address}" />
+					<td th:text="${building.universityName}" />
+					<td>
+						<span th:each="department, iterStat: ${building.departments}" th:if="${department != null}" th:text="${department.id} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+					<td>
+						<span th:each="room, iterStat: ${building.rooms}"
+							th:text="${room.id} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>

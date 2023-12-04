@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Room Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p><a th:href="@{/admin-panel/model-menu}">models</a></p>
+
+	<div class="container">
+		<table class="table table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Number</th>
+					<th scope="col">Building</th>
+					<th scope="col">Lessons</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="room: ${rooms}">
+					<td th:text="${room.id}" />
+					<td th:text="${room.number}" />
+					<td> 
+						<span th:if="${room.building != null}" th:text="${room.building.id}"></span>
+						<span th:if="${room.building == null}" text=" "></span>
+					</td>
+					<td>
+						<span th:each="lesson, iterStat: ${room.lessons}"
+							th:text="${lesson.id} + ${!iterStat.last ? ', ' : ''}"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+
+</html>

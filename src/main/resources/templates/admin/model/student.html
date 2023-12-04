@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Student Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p><a th:href="@{/admin-panel/model-menu}">models</a></p>
+
+	<form th:action="@{/student/create}" method="post">
+		<button type="submit">Add new Student</button>
+	</form>
+
+	<div class="container">
+		<table class="table table-condensed">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">First</th>
+					<th scope="col">Last</th>
+					<th scope="col">Birthday</th>
+					<th scope="col">Group</th>
+					<th scope="col">Update fields</th>
+					<th scope="col">Update relations</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student: ${students}">
+					<td th:text="${student.id}" />
+					<td th:text="${student.firstName}" />
+					<td th:text="${student.lastName}" />
+					<td th:text="${student.dateOfBirth}" />
+					<td>
+						<span th:if="${student.group != null}" th:text="${student.group.id}"></span>
+						<span th:if="${student.group == null}" text=" "></span>
+					</td>
+
+					<td>
+						<form th:action="@{/student/update}" th:object="${student}" method="post">
+							<input type="hidden" name="id" th:value="${student.id}" readonly="">
+							<label>first name:</label>
+							<input type="text" name="firstName" th:value="${student.firstName}">
+							<br><label>last name:</label>
+							<input type="text" name="lastName" th:value="${student.lastName}">
+							<br><label>birthday:</label>
+							<input type="date" name="dateOfBirth" th:value="${student.dateOfBirth}">
+							<br><button type="submit">Update</button>
+						</form>
+					</td>
+
+					<td>
+						<form th:action="@{/student/set-group}" method="post">
+							<label>group:</label>
+							<select name="groupId">
+								<option th:each="group : ${groups}" th:value="${group.id}" th:text="${group.id}">
+							</select>
+							<input type="hidden" name="studentId" th:value="${student.id}">
+							<button type="submit">Set</button>
+						</form>
+						<form th:action="@{/student/delete-group}" method="post">
+							<label>group:</label>
+							<input type="hidden" name="studentId" th:value="${student.id}">
+							<button type="submit">Remove</button>
+						</form>
+					</td>
+
+					<td>
+						<form th:action="@{/student/delete}" method="post">
+							<input type="hidden" name="studentId" th:value="${student.id}">
+							<button type="submit">Delete</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+
+</body>
+
+</html>
