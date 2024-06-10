@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+
+  database-postgres:
+    container_name: university-schedule-db
+    hostname: university-schedule-db
+    image: "postgres:16"
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: my-postgres
+      POSTGRES_PASSWORD: postgres_password
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
