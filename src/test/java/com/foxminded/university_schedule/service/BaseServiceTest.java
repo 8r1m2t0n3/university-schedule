@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,14 +18,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.foxminded.university_schedule.model.entity.Course;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@ExtendWith(MockitoExtension.class)
 class BaseServiceTest {
 
-	@Autowired
-	MockMvc mockMvc;
-	
-	@Autowired
+	@InjectMocks
 	BaseService baseService;
 	
 	@Test
