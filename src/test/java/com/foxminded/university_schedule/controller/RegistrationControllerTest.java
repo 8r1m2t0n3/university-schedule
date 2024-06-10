@@ -23,11 +23,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.foxminded.university_schedule.dto.UserRegistrationDTO;
-import com.foxminded.university_schedule.model.Role;
-import com.foxminded.university_schedule.model.Student;
-import com.foxminded.university_schedule.model.Teacher;
-import com.foxminded.university_schedule.model.User;
+import com.foxminded.university_schedule.model.dto.UserRegistrationDTO;
+import com.foxminded.university_schedule.model.entity.Role;
+import com.foxminded.university_schedule.model.entity.Student;
+import com.foxminded.university_schedule.model.entity.Teacher;
+import com.foxminded.university_schedule.model.entity.User;
 import com.foxminded.university_schedule.service.StudentService;
 import com.foxminded.university_schedule.service.TeacherService;
 import com.foxminded.university_schedule.service.UserService;

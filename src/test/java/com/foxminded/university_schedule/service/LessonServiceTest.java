@@ -16,9 +16,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.foxminded.university_schedule.model.Group;
-import com.foxminded.university_schedule.model.Lesson;
-import com.foxminded.university_schedule.model.Teacher;
+import com.foxminded.university_schedule.model.entity.Group;
+import com.foxminded.university_schedule.model.entity.Lesson;
+import com.foxminded.university_schedule.model.entity.Teacher;
 import com.foxminded.university_schedule.repository.LessonRepository;
 
 @ExtendWith(MockitoExtension.class)

@@ -1,4 +1,4 @@
-package com.foxminded.university_schedule.model;
+package com.foxminded.university_schedule.model.entity;
 
 import java.time.LocalDate;
 import java.util.Objects;

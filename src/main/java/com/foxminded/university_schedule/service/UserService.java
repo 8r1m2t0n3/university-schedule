@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.foxminded.university_schedule.model.Role;
-import com.foxminded.university_schedule.model.User;
+import com.foxminded.university_schedule.model.entity.Role;
+import com.foxminded.university_schedule.model.entity.User;
 import com.foxminded.university_schedule.repository.UserRepository;
 
 import jakarta.transaction.Transactional;

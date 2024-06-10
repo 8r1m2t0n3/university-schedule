@@ -8,9 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.foxminded.university_schedule.model.Group;
-import com.foxminded.university_schedule.model.Lesson;
-import com.foxminded.university_schedule.model.Teacher;
+import com.foxminded.university_schedule.model.entity.Group;
+import com.foxminded.university_schedule.model.entity.Lesson;
+import com.foxminded.university_schedule.model.entity.Teacher;
 import com.foxminded.university_schedule.repository.LessonRepository;
 
 import jakarta.transaction.Transactional;

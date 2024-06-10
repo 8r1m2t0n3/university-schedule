@@ -14,7 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.foxminded.university_schedule.model.Specialization;
+import com.foxminded.university_schedule.model.entity.Specialization;
 import com.foxminded.university_schedule.repository.SpecializationRepository;
 
 @ExtendWith(MockitoExtension.class)

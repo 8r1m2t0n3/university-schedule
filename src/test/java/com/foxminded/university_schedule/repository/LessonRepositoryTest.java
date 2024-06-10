@@ -15,7 +15,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.foxminded.university_schedule.model.Lesson;
+import com.foxminded.university_schedule.model.entity.Lesson;
 
 @ActiveProfiles("test")
 @AutoConfigureTestDatabase(replace = Replace.NONE)

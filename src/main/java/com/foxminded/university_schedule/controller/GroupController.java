@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.foxminded.university_schedule.model.Group;
-import com.foxminded.university_schedule.model.Specialization;
-import com.foxminded.university_schedule.model.Student;
+import com.foxminded.university_schedule.model.entity.Group;
+import com.foxminded.university_schedule.model.entity.Specialization;
+import com.foxminded.university_schedule.model.entity.Student;
 import com.foxminded.university_schedule.service.GroupService;
 import com.foxminded.university_schedule.service.SpecializationService;
 import com.foxminded.university_schedule.service.StudentService;

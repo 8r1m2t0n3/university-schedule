@@ -1,8 +1,8 @@
-package com.foxminded.university_schedule.dto;
+package com.foxminded.university_schedule.model.dto;
 
 import org.springframework.stereotype.Component;
 
-import com.foxminded.university_schedule.model.Role;
+import com.foxminded.university_schedule.model.entity.Role;
 
 @Component
 public class UserRegistrationDTO {

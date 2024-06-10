@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.foxminded.university_schedule.model.Course;
-import com.foxminded.university_schedule.model.Group;
-import com.foxminded.university_schedule.model.Lesson;
-import com.foxminded.university_schedule.model.Room;
-import com.foxminded.university_schedule.model.Teacher;
+import com.foxminded.university_schedule.model.entity.Course;
+import com.foxminded.university_schedule.model.entity.Group;
+import com.foxminded.university_schedule.model.entity.Lesson;
+import com.foxminded.university_schedule.model.entity.Room;
+import com.foxminded.university_schedule.model.entity.Teacher;
 import com.foxminded.university_schedule.service.CourseService;
 import com.foxminded.university_schedule.service.GroupService;
 import com.foxminded.university_schedule.service.LessonService;

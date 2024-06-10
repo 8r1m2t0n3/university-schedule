@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.foxminded.university_schedule.model.Group;
+import com.foxminded.university_schedule.model.entity.Group;
 import com.foxminded.university_schedule.repository.GroupRepository;
 
 import jakarta.transaction.Transactional;

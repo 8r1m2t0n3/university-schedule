@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.foxminded.university_schedule.model.User;
+import com.foxminded.university_schedule.model.entity.User;
 import com.foxminded.university_schedule.repository.UserRepository;
 
 @Service("userDetailsServiceImpl")

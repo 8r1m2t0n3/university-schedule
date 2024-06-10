@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
-import com.foxminded.university_schedule.model.BaseModel;
+import com.foxminded.university_schedule.model.entity.BaseModel;
 
 @Component
 class BaseService {

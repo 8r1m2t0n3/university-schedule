@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.foxminded.university_schedule.model.User;
+import com.foxminded.university_schedule.model.entity.User;
 import com.foxminded.university_schedule.service.UserService;
 
 @SpringBootTest

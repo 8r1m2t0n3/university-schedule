@@ -16,8 +16,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.foxminded.university_schedule.model.Role;
-import com.foxminded.university_schedule.model.User;
+import com.foxminded.university_schedule.model.entity.Role;
+import com.foxminded.university_schedule.model.entity.User;
 import com.foxminded.university_schedule.repository.UserRepository;
 
 @ExtendWith(MockitoExtension.class)

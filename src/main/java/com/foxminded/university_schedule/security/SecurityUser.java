@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.foxminded.university_schedule.model.User;
+import com.foxminded.university_schedule.model.entity.User;
 
 public class SecurityUser implements UserDetails {
 

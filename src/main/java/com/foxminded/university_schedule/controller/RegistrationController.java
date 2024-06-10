@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.foxminded.university_schedule.dto.UserRegistrationDTO;
-import com.foxminded.university_schedule.model.Role;
-import com.foxminded.university_schedule.model.User;
+import com.foxminded.university_schedule.model.dto.UserRegistrationDTO;
+import com.foxminded.university_schedule.model.entity.Role;
+import com.foxminded.university_schedule.model.entity.User;
 import com.foxminded.university_schedule.service.StudentService;
 import com.foxminded.university_schedule.service.TeacherService;
 import com.foxminded.university_schedule.service.UserService;

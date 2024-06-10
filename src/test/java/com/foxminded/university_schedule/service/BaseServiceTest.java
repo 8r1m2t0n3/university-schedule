@@ -13,7 +13,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.foxminded.university_schedule.model.Course;
+import com.foxminded.university_schedule.model.entity.Course;
 
 @SpringBootTest
 @AutoConfigureMockMvc
