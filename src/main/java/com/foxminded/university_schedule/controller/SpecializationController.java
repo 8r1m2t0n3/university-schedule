@@ -11,7 +11,7 @@ import com.foxminded.university_schedule.service.SpecializationService;
 @RequestMapping("/specialization")
 public class SpecializationController {
 
-	private SpecializationService specializationService;
+	private final SpecializationService specializationService;
 	
 	public SpecializationController(SpecializationService specializationService) {
 		this.specializationService = specializationService;

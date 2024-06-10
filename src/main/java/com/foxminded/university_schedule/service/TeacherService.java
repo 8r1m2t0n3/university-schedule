@@ -15,9 +15,9 @@ import jakarta.transaction.Transactional;
 @Service
 public class TeacherService extends BaseService {
 
-	private TeacherRepository teacherRepository;
+	private final TeacherRepository teacherRepository;
 
-	private Logger logger = LoggerFactory.getLogger(TeacherService.class);
+	private final Logger logger = LoggerFactory.getLogger(TeacherService.class);
 
 	public TeacherService(TeacherRepository teacherRepository) {
 		this.teacherRepository = teacherRepository;

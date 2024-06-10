@@ -11,7 +11,7 @@ import com.foxminded.university_schedule.service.BuildingService;
 @RequestMapping("/building")
 public class BuildingController {
 
-	private BuildingService buildingService;
+	private final BuildingService buildingService;
 
 	public BuildingController(BuildingService buildingService) {
 		this.buildingService = buildingService;

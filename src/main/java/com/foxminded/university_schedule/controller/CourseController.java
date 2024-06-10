@@ -26,11 +26,11 @@ import com.foxminded.university_schedule.service.TeacherService;
 @RequestMapping("/course")
 public class CourseController {
 
-	private StudentService studentService;
-	private GroupService groupService;
-	private CourseService courseService;
-	private SpecializationService specializationService;
-	private TeacherService teacherService;
+	private final StudentService studentService;
+	private final GroupService groupService;
+	private final CourseService courseService;
+	private final SpecializationService specializationService;
+	private final TeacherService teacherService;
 
 	public CourseController(GroupService groupService, StudentService studentService, CourseService courseService,
 			SpecializationService specializationService, TeacherService teacherService) {

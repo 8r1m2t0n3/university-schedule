@@ -17,7 +17,7 @@ public class DepartmentService extends BaseService {
 
 	private DepartmentRepository departmentRepository;
 
-	private Logger logger = LoggerFactory.getLogger(DepartmentService.class);
+	private final Logger logger = LoggerFactory.getLogger(DepartmentService.class);
 
 	public DepartmentService(DepartmentRepository departmentRepository) {
 		this.departmentRepository = departmentRepository;

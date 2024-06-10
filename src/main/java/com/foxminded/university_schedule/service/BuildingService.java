@@ -15,9 +15,9 @@ import jakarta.transaction.Transactional;
 @Service
 public class BuildingService extends BaseService {
 
-	private BuildingRepository buildingRepository;
+	private final BuildingRepository buildingRepository;
 
-	private Logger logger = LoggerFactory.getLogger(BuildingService.class);
+	private final static Logger logger = LoggerFactory.getLogger(BuildingService.class);
 	
 	public BuildingService(BuildingRepository buildingRepository) {
 		this.buildingRepository = buildingRepository;

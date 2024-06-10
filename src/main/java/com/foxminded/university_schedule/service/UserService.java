@@ -17,10 +17,10 @@ import jakarta.transaction.Transactional;
 @Service
 public class UserService extends BaseService {
 
-	private UserRepository userRepository;
-	private PasswordEncoder passwordEncoder;
+	private final UserRepository userRepository;
+	private final PasswordEncoder passwordEncoder;
 
-	private Logger logger = LoggerFactory.getLogger(UserService.class);
+	private final Logger logger = LoggerFactory.getLogger(UserService.class);
 
 	private static final Integer MIN_PASSWORD_LENGTH = 5;
 	private static final Integer MIN_USERNAME_LENGTH = 3;

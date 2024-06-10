@@ -36,13 +36,13 @@ import com.foxminded.university_schedule.service.UserService;
 @RequestMapping("/schedule")
 public class ScheduleController {
 
-	private TeacherService teacherService;
-	private GroupService groupService;
-	private LessonService lessonService;
-	private UserService userService;
-	private CourseService courseService;
-	private StudentService studentService;
-	private RoomService roomService;
+	private final TeacherService teacherService;
+	private final GroupService groupService;
+	private final LessonService lessonService;
+	private final UserService userService;
+	private final CourseService courseService;
+	private final StudentService studentService;
+	private final RoomService roomService;
 
 	private static Map<User, Group> selectedGroups = new HashMap<>();
 	private static Map<User, Teacher> selectedTeachers = new HashMap<>();

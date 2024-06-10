@@ -19,10 +19,10 @@ import com.foxminded.university_schedule.service.UserService;
 @RequestMapping("/auth")
 public class RegistrationController {
 
-	private UserService userService;
-	private StudentService studentService;
-	private TeacherService teacherService;
-	private ModelMapper mapper;
+	private final UserService userService;
+	private final StudentService studentService;
+	private final TeacherService teacherService;
+	private final ModelMapper mapper;
 
 	public RegistrationController(UserService userService, StudentService studentService,
 			TeacherService teacherService) {

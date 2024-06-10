@@ -15,9 +15,9 @@ import jakarta.transaction.Transactional;
 @Service
 public class SpecializationService extends BaseService {
 	
-	private SpecializationRepository specializationRepository;
+	private final SpecializationRepository specializationRepository;
 
-	private Logger logger = LoggerFactory.getLogger(SpecializationService.class);
+	private final Logger logger = LoggerFactory.getLogger(SpecializationService.class);
 
 	public SpecializationService(SpecializationRepository specializationRepository) {
 		this.specializationRepository = specializationRepository;

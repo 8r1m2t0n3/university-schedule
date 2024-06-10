@@ -11,7 +11,7 @@ import com.foxminded.university_schedule.service.RoomService;
 @RequestMapping("/room")
 public class RoomController {
 
-	private RoomService roomService;
+	private final RoomService roomService;
 	
 	public RoomController(RoomService roomService) {
 		this.roomService = roomService;

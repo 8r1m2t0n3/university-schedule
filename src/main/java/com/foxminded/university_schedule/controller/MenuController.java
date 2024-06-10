@@ -17,7 +17,7 @@ import com.foxminded.university_schedule.service.UserService;
 @RequestMapping("/menu")
 public class MenuController {
 
-	private UserService userService;
+	private final UserService userService;
 
 	public MenuController(UserService userService) {
 		this.userService = userService;

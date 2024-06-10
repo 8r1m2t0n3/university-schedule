@@ -25,11 +25,11 @@ import com.foxminded.university_schedule.service.TeacherService;
 @RequestMapping("/lesson")
 public class LessonController {
 	
-	private LessonService lessonService;
-	private CourseService courseService;
-	private TeacherService teacherService;
-	private GroupService groupService;
-	private RoomService roomService;
+	private final LessonService lessonService;
+	private final CourseService courseService;
+	private final TeacherService teacherService;
+	private final GroupService groupService;
+	private final RoomService roomService;
 	
 	public LessonController(LessonService lessonService, CourseService courseService, TeacherService teacherService,
 			GroupService groupService, RoomService roomService) {

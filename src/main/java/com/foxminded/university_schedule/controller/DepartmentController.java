@@ -11,7 +11,7 @@ import com.foxminded.university_schedule.service.DepartmentService;
 @RequestMapping("/department")
 public class DepartmentController {
 
-	private DepartmentService departmentService;
+	private final DepartmentService departmentService;
 
 	public DepartmentController(DepartmentService departmentService) {
 		this.departmentService = departmentService;

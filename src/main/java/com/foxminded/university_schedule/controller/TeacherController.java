@@ -24,10 +24,10 @@ import com.foxminded.university_schedule.service.TeacherService;
 @RequestMapping("/teacher")
 public class TeacherController {
 
-	private TeacherService teacherService;
-	private DepartmentService departmentService;
-	private CourseService courseService;
-	private LessonService lessonService;
+	private final TeacherService teacherService;
+	private final DepartmentService departmentService;
+	private final CourseService courseService;
+	private final LessonService lessonService;
 
 	public TeacherController(TeacherService teacherService, DepartmentService departmentService, CourseService courseService, LessonService lessonService) {
 		this.teacherService = teacherService;

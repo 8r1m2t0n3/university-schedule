@@ -23,9 +23,9 @@ import com.foxminded.university_schedule.service.StudentService;
 @RequestMapping("/group")
 public class GroupController {
 
-	private GroupService groupService;
-	private StudentService studentService;
-	private SpecializationService specializationService;
+	private final GroupService groupService;
+	private final StudentService studentService;
+	private final SpecializationService specializationService;
 
 	public GroupController(GroupService groupService, StudentService studentService,
 			SpecializationService specializationService) {

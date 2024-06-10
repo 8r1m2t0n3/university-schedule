@@ -15,9 +15,9 @@ import jakarta.transaction.Transactional;
 @Service
 public class RoomService extends BaseService {
 
-	private RoomRepository roomRepository;
+	private final RoomRepository roomRepository;
 
-	private Logger logger = LoggerFactory.getLogger(RoomService.class);
+	private final Logger logger = LoggerFactory.getLogger(RoomService.class);
 
 	public RoomService(RoomRepository roomRepository) {
 		this.roomRepository = roomRepository;

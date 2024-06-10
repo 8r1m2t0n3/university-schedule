@@ -1,5 +1,6 @@
 package com.foxminded.university_schedule.service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +23,7 @@ class BaseService {
 		if (list.isEmpty()) {
 			return list;
 		}
-		list.sort((o1, o2) -> o1.getId().compareTo(o2.getId()));
+		list.sort(Comparator.comparing(BaseModel::getId));
 		return list;
 	}
 

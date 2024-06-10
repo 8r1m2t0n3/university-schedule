@@ -15,9 +15,9 @@ import jakarta.transaction.Transactional;
 @Service
 public class GroupService extends BaseService {
 
-	private GroupRepository groupRepository;
+	private final GroupRepository groupRepository;
 
-	private Logger logger = LoggerFactory.getLogger(GroupService.class);
+	private final Logger logger = LoggerFactory.getLogger(GroupService.class);
 
 	public GroupService(GroupRepository groupRepository) {
 		this.groupRepository = groupRepository;
