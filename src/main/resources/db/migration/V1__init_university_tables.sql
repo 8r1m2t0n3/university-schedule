@@ -1,17 +1,3 @@
-drop table if exists teachers_departments;
-drop table if exists rooms;
-drop table if exists persons;
-drop table if exists students;
-drop table if exists teachers;
-drop table if exists lessons;
-drop table if exists departments;
-drop table if exists courses_teachers;
-drop table if exists courses_departments;
-drop table if exists courses;
-drop table if exists buildings;
-drop table if exists groups;
-drop table if exists specializations;
-
 create table buildings (
    id serial not null,
    address varchar (127),

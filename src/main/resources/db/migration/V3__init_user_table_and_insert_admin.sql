@@ -1,5 +1,3 @@
-drop table if exists users;
-
 create table users (
    id serial not null,
    username varchar(63),
