@@ -53,28 +53,28 @@ class RegistrationControllerTest {
 	ModelMapper mapper;
 
 	@Test
-	void getRregistrationPage_shouldAccess_whenUserHasAnyAuthority() throws Exception {
+	void getRegistrationPage_shouldAccess_whenUserHasAnyAuthority() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/auth/registration"))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
 	@Test
 	@WithMockUser(authorities = "READ")
-	void getRregistrationPage_shouldAccess_whenUserHasReadAuthority() throws Exception {
+	void getRegistrationPage_shouldAccess_whenUserHasReadAuthority() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/auth/registration"))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
 	@Test
 	@WithMockUser(authorities = "WRITE")
-	void getRregistrationPage_shouldAccess_whenUserHasWriteAuthority() throws Exception {
+	void getRegistrationPage_shouldAccess_whenUserHasWriteAuthority() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/auth/registration"))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
 	@Test
 	@WithMockUser(authorities = "EDIT_USERS")
-	void getRregistrationPage_shouldAccess_whenUserHasEditUsersAuthority() throws Exception {
+	void getRegistrationPage_shouldAccess_whenUserHasEditUsersAuthority() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/auth/registration"))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
