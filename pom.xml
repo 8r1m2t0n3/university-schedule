@@ -7,7 +7,7 @@
 		<version>3.0.1</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.foxminded</groupId>
+	<groupId>com.brimstone</groupId>
 	<artifactId>university_schedule</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>university_schedule</name>
